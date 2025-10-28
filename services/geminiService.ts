@@ -1,10 +1,12 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
 
 if (!process.env.API_KEY) {
     throw new Error("API_KEY environment variable not set");
 }
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const genAI = new GoogleGenerativeAI(process.env.API_KEY!);
+
 
 const generatePrompt = (profession: string, activities: string, gender: 'muž' | 'žena'): string => {
     const genderInEnglish = gender === 'muž' ? 'man' : 'woman';
